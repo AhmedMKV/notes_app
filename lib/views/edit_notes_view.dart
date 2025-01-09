@@ -4,7 +4,9 @@ import 'package:notes_app/views/widgets/custom_text_field.dart';
 
 class EditNotesView extends StatelessWidget {
   const EditNotesView({super.key});
-static String editId = 'EditView';
+
+  static String editId = 'EditView';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

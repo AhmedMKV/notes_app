@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'dart:math' ;
+import 'dart:math';
 
 import '../edit_notes_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key,});
+  const CustomNoteItem({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return
-      InkWell(
-        onTap:(){
-          Navigator.pushNamed(context, EditNotesView.editId);
-        },
-        child: Container(
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, EditNotesView.editId);
+      },
+      child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color:Colors.primaries[Random().nextInt(Colors.primaries.length)],),
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+        ),
         child: Padding(
             padding: const EdgeInsets.only(
               top: 24,
@@ -55,7 +57,7 @@ class CustomNoteItem extends StatelessWidget {
                 )
               ],
             )),
-            ),
-      );
+      ),
+    );
   }
 }

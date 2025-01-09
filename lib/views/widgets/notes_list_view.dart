@@ -8,15 +8,13 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ListView.separated(
-
-
+    return ListView.separated(
         itemCount: 10,
-        itemBuilder: (context , index){
+        itemBuilder: (context, index) {
           return CustomNoteItem();
         },
         separatorBuilder: (context, index) => SizedBox(
-          height: 10,)
-    );
+              height: 10,
+            ));
   }
 }
