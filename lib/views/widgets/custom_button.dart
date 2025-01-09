@@ -18,7 +18,7 @@ class CustomButton extends StatelessWidget {
         ),
        
         height: 48,
-        width: double.infinity,
+        width:MediaQuery.of(context).size.width,
         child: Center(
           child: Text(
             buttonText,
