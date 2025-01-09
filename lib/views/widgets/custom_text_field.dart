@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFields extends StatelessWidget {
-  CustomTextFields({
+ const  CustomTextFields({
     this.maxLines = 1,
     this.onChanged,
     super.key,
@@ -9,11 +9,11 @@ class CustomTextFields extends StatelessWidget {
     required this.hint,
     this.obscureText = false});
 
-  bool? obscureText;
+ final bool? obscureText;
 
   final String hint;
-  Function(String)? onChanged;
-  TextInputType? inputType;
+  final Function(String)? onChanged;
+  final TextInputType? inputType;
   final int maxLines;
 
   @override

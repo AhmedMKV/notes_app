@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/views/edit_notes_view.dart';
 
 import 'custom_note_item.dart';
 
