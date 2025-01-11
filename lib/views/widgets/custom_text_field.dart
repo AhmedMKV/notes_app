@@ -3,26 +3,33 @@ import 'package:flutter/material.dart';
 class CustomTextFields extends StatelessWidget {
   const CustomTextFields(
       {this.maxLines = 1,
-      this.onChanged,
       super.key,
       this.inputType,
       required this.hint,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.onSaved});
 
   final bool? obscureText;
 
   final String hint;
-  final Function(String)? onChanged;
+  final void Function(String?)? onSaved;
   final TextInputType? inputType;
   final int maxLines;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value){
+        if(value?.isEmpty ?? true){
+          return 'field is required';
+        }else{
+          return null;
+        }
+      },
       maxLines: maxLines,
       obscureText: obscureText!,
       keyboardType: inputType,
-      onChanged: onChanged,
+      onSaved: onSaved,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
