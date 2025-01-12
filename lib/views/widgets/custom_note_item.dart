@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import '../../models/notes_model.dart';
 import '../edit_notes_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
   const CustomNoteItem({
+    required this.note,
     super.key,
   });
-
+final NoteModel note ;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -30,14 +32,14 @@ class CustomNoteItem extends StatelessWidget {
                 ListTile(
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 25),
-                    child: Text('Flutter tips'),
+                    child: Text(note.title),
                   ),
                   titleTextStyle: TextStyle(
                     color: Colors.black,
                     fontSize: 28,
                   ),
                   subtitle: Text(
-                      'Improve yourself and keep grinding Improve yourself and keep grinding Improve yourself and keep grinding'),
+                      note.subtitle),
                   subtitleTextStyle:
                       TextStyle(color: Color(0xFF303030), fontSize: 14),
                   trailing: IconButton(
@@ -51,7 +53,7 @@ class CustomNoteItem extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Text(
-                    'created at ????????',
+                    note.date,
                     style: TextStyle(color: Color(0xFF303030), fontSize: 12),
                   ),
                 )
