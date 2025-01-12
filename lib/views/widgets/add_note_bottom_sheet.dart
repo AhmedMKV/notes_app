@@ -7,29 +7,37 @@ import 'package:notes_app/views/widgets/show_snack_bar.dart';
 
 import 'add_note_form.dart';
 
-class AddNoteBottomSheet extends StatelessWidget {
+class AddNoteBottomSheet extends StatefulWidget {
   const AddNoteBottomSheet({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if (state is AddNoteFailure) {
-            state.printing();
-          }
-          if (state is AddNoteSuccess) {
+  State<AddNoteBottomSheet> createState() => _AddNoteBottomSheetState();
+}
 
-            Navigator.pop(context);
-          }
-        },
-        builder: (context, state) {
-          return ModalProgressHUD(
-              inAsyncCall: state is AddNoteLoading ? true : false,
-              child: SingleChildScrollView(child: AddNoteForm()));
-        },
-      ),
-    );
+class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
+  @override
+  Widget build(BuildContext context) {
+    return
+      BlocProvider(
+        create: (context) => AddNoteCubit(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          child: BlocConsumer<AddNoteCubit, AddNoteState>(
+            listener: (context, state) {
+              if (state is AddNoteFailure) {
+                state.printing();
+              }
+              if (state is AddNoteSuccess) {
+                Navigator.pop(context);
+              }
+            },
+            builder: (context, state) {
+              return ModalProgressHUD(
+                  inAsyncCall: state is AddNoteLoading ? true : false,
+                  child: SingleChildScrollView(child: AddNoteForm()));
+            },
+          ),
+        ),
+      );
   }
 }
