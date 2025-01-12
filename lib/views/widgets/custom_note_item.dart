@@ -16,7 +16,12 @@ final NoteModel note ;
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, EditNotesView.editId);
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context){
+              return EditNotesView(note: note,);
+            })
+        );
       },
       child: Container(
         decoration: BoxDecoration(

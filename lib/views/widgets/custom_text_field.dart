@@ -7,7 +7,7 @@ class CustomTextFields extends StatelessWidget {
       this.inputType,
       required this.hint,
       this.obscureText = false,
-      this.onSaved});
+      this.onSaved, this.onChanged});
 
   final bool? obscureText;
 
@@ -15,10 +15,11 @@ class CustomTextFields extends StatelessWidget {
   final void Function(String?)? onSaved;
   final TextInputType? inputType;
   final int maxLines;
-
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged:onChanged ,
       validator: (value){
         if(value?.isEmpty ?? true){
           return 'field is required';
