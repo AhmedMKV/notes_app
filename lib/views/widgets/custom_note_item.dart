@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'dart:math';
 
 import '../../models/notes_model.dart';
@@ -43,7 +45,10 @@ final NoteModel note ;
                   subtitleTextStyle:
                       TextStyle(color: Color(0xFF303030), fontSize: 14),
                   trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        note.delete();
+                        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                      },
                       icon: Icon(
                         Icons.delete,
                         size: 24,
