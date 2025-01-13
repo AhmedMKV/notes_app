@@ -27,6 +27,8 @@ String ? title,subtitle ;
             CustomAppBar(
               onPressed: (){
                 widget.note.title=title ?? widget.note.title;
+
+
                 widget.note.subtitle = subtitle?? widget.note.subtitle;
                 widget.note.save();
                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
